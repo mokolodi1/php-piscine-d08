@@ -7,6 +7,7 @@ class OnScreen {
 	public $position_y;
 	public $width;
 	public $height;
+	public $image_file;
 	# no rotation for now (figure out how to do this)
 	
 	public function __construct( array $kwargs ) {
@@ -14,6 +15,7 @@ class OnScreen {
 		$this->position_y = $kwargs['y'];
 		$this->width = $kwargs['width'];
 		$this->height = $kwargs['height'];
+		$this->image_file = $kwargs['image_file'];
 	}
 	
 	public function isOccupying($x, $y) {
@@ -22,9 +24,8 @@ class OnScreen {
 				&& $x < $this->position_x + $this->width
 				&& $y >= $this->position_y
 				&& $y < $this->position_y + $this->height);
+		# this needs to change when we add rotation
 	}
-	
-	
 
 }
 
