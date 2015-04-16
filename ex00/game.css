@@ -10,7 +10,7 @@ tr {
 
 td {
 	width: 10px;
-	height: 10px;
+	height: 13px; /* I don't know why it's 10... */
 	border: 1px solid black;
 }
 
