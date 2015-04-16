@@ -9,7 +9,7 @@ class Scout extends Ship {
 									, 'y' => $y
 									, 'width' => 1
 									, 'height' => 1
-									, 'health' => 10
+									, 'max_health' => 10
 									, 'shield' => 5
 									, 'pp' => 5
 									, 'image_file' => 'scout.png') );
