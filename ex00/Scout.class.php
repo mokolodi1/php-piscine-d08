@@ -5,7 +5,8 @@ include_once('Ship.class.php');
 class Scout extends Ship {
 
 	public function __construct($x, $y) {
-		parent::__construct( array ('x' => $x
+		parent::__construct( array ( 'name' => 'Scout'
+									, 'x' => $x
 									, 'y' => $y
 									, 'width' => 1
 									, 'height' => 1

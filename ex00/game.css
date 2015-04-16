@@ -1,0 +1,27 @@
+table{
+	border-collapse: collapse;
+}
+
+tr {
+	
+	max-height: 10px;
+
+}
+
+td {
+	width: 10px;
+	height: 10px;
+	border: 1px solid black;
+}
+
+td img {
+	position: relative;
+	width: 100%;
+	padding: 0px;
+	border: 0px;
+	margin: auto;
+}
+
+.scout {
+	background-image: "images/scout.png";
+}
