@@ -16,7 +16,7 @@ class OnScreen {
 	public $rotation;
 
 	public function __construct( array $kwargs ) {
-		if ( !isset( $kwargs['x'] ) 
+		if ( !isset( $kwargs['x'] )
 				|| !isset( $kwargs['y'] )
 				|| !isset( $kwargs['width'] )
 				|| !isset( $kwargs['height'] )
@@ -32,6 +32,19 @@ class OnScreen {
 		$this->image_file = $kwargs['image_file'];
 		
 		$this->rotation = OnScreen::ROTATION_0;
+	}
+	
+	public function checkFitScreen( array $kwargs) 
+	{
+		$god_pos = 1;
+		if (150 < $kwargs['x'] || $kwargs['x'] < 0)
+			$good_pos = 0;
+		else if (100 < $kwargs['y'] || $kwargs['y'] < 0)
+			$good_pos = 0;
+		else if (150 < $kwargs['x'] + $kwargs['width'] || $kwargs['width'] == 0)
+			$good_pos = 0;
+		else if (100 < $kwargs['y'] + $kwargs['height'] || $kwargs['height'] == 0)
+			$good_pos = 0;
 	}
 	
 	public function isOccupying($x, $y) {
