@@ -33,9 +33,9 @@ abstract class Ship extends OnScreen {
 	}
 	
 	# should be called at the beginning of each turn to reset things
-	public function beginningOfTurn() {
-		$this->shield = $this->default_shield;
-	}
+#	public function beginningOfTurn() {
+#		$this->shield = $this->default_shield;
+#	}
 
 	public abstract function fight(array $kwargs);
 	
