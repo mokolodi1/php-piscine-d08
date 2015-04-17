@@ -100,6 +100,10 @@ function printHealthStats($name, $arena) {
 	<form action="reset.php" method="POST">
 		<input name="reset" value="reset" type="submit" />
 	</form>
+	<form action="shoot.php" method="POST">
+		<input type="hidden" name="name" value="b">
+		<input name="shoot" value="shoot_down" type="submit">
+	</form>
 	<p>
 		<?php
 		printHealthStats('b', $_SESSION['arena']);
