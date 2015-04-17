@@ -22,7 +22,11 @@ td img {
 	margin: auto;
 }
 
-.scout {
+.scoutA {
 	/*background-image: "images/scout.png";*/
 	background-color: red;
+}
+
+.scoutB {
+	background-color: green;
 }
