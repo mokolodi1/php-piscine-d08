@@ -21,7 +21,7 @@ function getShipName($x, $y, $arena) {
 }
 
 function printHealthStats($name, $arena) {
-	$ship = getShipByName('a', $arena);
+	$ship = getShipByName($name, $arena);
 	if ($ship) {
 		echo "Ship " . $name . " health: " . $ship->getHealth();
 	} else {
