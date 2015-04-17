@@ -6,7 +6,6 @@ function getShipByName($name, $arena) {
 			return $current;
 		}
 	}
-	error_log('ship not found in getShipByName');
 	return null;
 }
 

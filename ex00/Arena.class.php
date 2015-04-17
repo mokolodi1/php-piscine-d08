@@ -37,7 +37,6 @@ class Arena {
 	public function destroyShip($ship) {
 		if (($key = array_search($ship, $this->onScreens)) !== false){	
  			   unset($this->onScreens[$key]);
- 			   	error_log("Destroyed ship");
 			}
 	}
 
