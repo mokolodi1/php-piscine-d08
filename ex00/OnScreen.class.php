@@ -50,16 +50,6 @@
 		
 		$this->rotation = OnScreen::ROTATION_0;
 	}
-
-	public function isInLimits(Arena $arena)
-	{
-		#check if the ship has gone out of screen
-		if($this->position_x < 0 || $this->position_x > $arena->width
-			|| $this->position_y < 0 || $this->position_y > $arena->height)
-			{
-				echo "YOUR OnScreen OBJECT IS OUT OF SCREEN\n";
-			}
-	}
 	
 	public function isOccupying($x, $y) {
 		# returns whether the OnScreen is over ($x, $y)

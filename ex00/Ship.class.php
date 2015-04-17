@@ -52,9 +52,10 @@ abstract class Ship extends OnScreen {
 	
 	public function isInLimits($arena)
 	{
+		error_log($arena->width);
 		#check if the ship has gone out of screen
-		if($this->position_x < 0 || $this->position_x > $arena->getWidth()
-			|| $this->position_y < 0 || $this->position_y > $arena->getHeight())
+		if($this->position_x < 0 || $this->position_x >= $arena->getWidth()
+			|| $this->position_y < 0 || $this->position_y >= $arena->getHeight())
 			{
 				$this->DestroyShip($arena);
 				return FALSE;
@@ -98,7 +99,7 @@ abstract class Ship extends OnScreen {
 				error_log('new y = ' . $this->position_y);
 			}
 		}
-	}
+	}	
 } 
 
 ?>
