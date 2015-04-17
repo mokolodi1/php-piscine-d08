@@ -33,10 +33,6 @@ class Arena {
 		return sprintf("Arena[ width: %d ; height: %d ; onScreens: [%s]"
 						, $this->width, $this->height, $drawables);
 	}
-	
-	public function isInBounds($x, $y) {
-		return ($x >= 0 && $x < $this->width && $y >= 0 && $y < $this->height);
-	}
 
 	public function destroyShip($ship) {
 		if (($key = array_search($ship, $this->onScreens)) !== false){	
