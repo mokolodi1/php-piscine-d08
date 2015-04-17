@@ -2,7 +2,7 @@
 
 include_once('OnScreen.class.php');
 
-class Ship extends OnScreen {
+abstract class Ship extends OnScreen {
 	
 	
 	public $name;
