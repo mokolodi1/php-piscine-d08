@@ -1,4 +1,4 @@
-<- OnScreen ----------------------------------------------------------------------
+<- OnScreen -------------------------------------------------------------------
 The OnScreen object is any object operating in the field; it has a position_x, 
 a position_y, a width and a height protected properties.
 
