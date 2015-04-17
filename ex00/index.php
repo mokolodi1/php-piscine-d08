@@ -29,6 +29,15 @@ function printHealthStats($name, $arena) {
 	}
 }
 
+function printShieldStats($name, $arena) {
+	$ship = getShipByName($name, $arena);
+	if ($ship) {
+		echo "Ship " . $name . " shield: " . $ship->getShield();
+	} else {
+		echo "No shield on ship " . $name . ".";
+	}
+}
+
 ?>
 
 <html>
@@ -59,7 +68,8 @@ function printHealthStats($name, $arena) {
 ?>
 
 </table>
-	<p>Ship A controls:</p><br/>
+	<h4>Ship A controls:</h4>
+	<br/>
 	<form action="move.php" method="POST">
 		<input type="hidden" name="name" value="a">
 		<div>
@@ -78,13 +88,12 @@ function printHealthStats($name, $arena) {
 		<input name="shoot" value="shoot_down" type="submit">
 		<input name="shoot" value="shoot_up" type="submit">
 	</form>
-	<p>
-		<?php
-		printHealthStats('a', $_SESSION['arena']);
-		?>
-	</p>
+	<?php printHealthStats('a', $_SESSION['arena']); ?>
+	<br />
+	<?php printShieldStats('a', $_SESSION['arena']); ?>
 	
-	<p>Ship B controls:</p><br/>
+	<h4>Ship B controls:</h4>
+	<br/>
 	<form action="move.php" method="POST">
 		<input type="hidden" name="name" value="b">
 		<div>
@@ -98,19 +107,21 @@ function printHealthStats($name, $arena) {
 			<input name="move" value="0, 1" type="submit" />
 		</div>
 	</form>
+	
+	<form action="shoot.php" method="POST">
+		<input type="hidden" name="name" value="b">
+		<input name="shoot" value="shoot_down" type="submit">
+		<input name="shoot" value="shoot_up" type="submit">
+	</form>
+	<?php printHealthStats('b', $_SESSION['arena']); ?>
+	<br />
+	<?php printShieldStats('b', $_SESSION['arena']); ?>
+
+	<p></p>
+	<p></p>
 	<form action="reset.php" method="POST">
 		<input name="reset" value="reset" type="submit" />
 	</form>
-	<form action="shoot.php" method="POST">
-		<input type="hidden" name="name" value="b">
-		<input name="shoot" value="shoot_down" type="submit">
-		<input name="shoot" value="shoot_up" type="submit">
-	</form>
-	<p>
-		<?php
-		printHealthStats('b', $_SESSION['arena']);
-		?>
-	</p>
 
 	<pre>
 	<?php print_r($_SESSION['arena']); ?>
