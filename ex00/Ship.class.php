@@ -4,7 +4,6 @@ include_once('OnScreen.class.php');
 
 abstract class Ship extends OnScreen {
 
-	protected $name;
 	protected $max_health;
 	protected $health;
 	protected $default_shield;
@@ -15,8 +14,7 @@ abstract class Ship extends OnScreen {
 	public function __construct( array $kwargs ) {
 		parent::__construct( $kwargs );
 		
-		if ( !isset( $kwargs['name'] ) 
-				|| !isset( $kwargs['max_health'] )
+		if ( !isset( $kwargs['max_health'] )
 				|| !isset( $kwargs['shield'] )
 				|| !isset( $kwargs['pp'] ) 
 				|| !isset( $kwargs['speed'])
@@ -25,8 +23,6 @@ abstract class Ship extends OnScreen {
 						. PHP_EOL );
 			exit(1);
 		}
-
-		$this->name = $kwargs['name'];
 		$this->max_health = $kwargs['max_health'];
 		$this->defaultShield = $kwargs['shield'];
 		$this->pointsDePuissance = $kwargs['pp'];
@@ -89,7 +85,6 @@ abstract class Ship extends OnScreen {
 		}
 	}
 
-	public function getName() {			return $this->name; }
 	public function getHealth() {		return $this->health; }
 	public function getShield() {		return $this->shield; }
 	public function getSpeed() {		return $this->speed; }
