@@ -1,6 +1,9 @@
 <?php
 
 include_once('OnScreen.class.php');
+include_once('Obstacle.class.php');
+include_once('Scout.class.php');
+
 
 class Arena {
 	private $_width;

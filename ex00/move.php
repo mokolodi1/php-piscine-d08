@@ -10,13 +10,13 @@ include_once('getShipByName.php');
 
 session_start();
 
-
+header('Location: index.php');
 
 # debugging
 ?>
-<pre>
+<!-- <pre>
 <?php print_r($_SESSION['arena']); ?>
-</pre>
+</pre> -->
 <?php
 
 $exploded = explode(',', $_POST['move']);
