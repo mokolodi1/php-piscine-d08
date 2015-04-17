@@ -21,12 +21,12 @@ $direction_shoot = $_POST['shoot'];
 $shipThatShoots = getShipByName($_POST['name'], $_SESSION['arena']);
 if ($shipThatShoots)
 {
-	error_log("shooting down");
 	$shipThatShoots->fight(array("dice_roll" => "short"
 							, "width" => $shipThatShoots->getWidth()
 							, "position_x" => $shipThatShoots->getPositionX()
 							, "position_y" => $shipThatShoots->getPositionY()
-							, "arena" => $_SESSION['arena']));
+							, "arena" => $_SESSION['arena']
+							, "direction" => $_POST['shoot']));
 }
 
 header('Location: index.php');

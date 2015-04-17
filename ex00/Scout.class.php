@@ -23,7 +23,8 @@ class Scout extends Ship {
 
 	public function fight(array $kwargs) {
 		$ship = $this->type($kwargs['dice_roll'], $kwargs['width'],
-			$kwargs['position_x'], $kwargs['position_y'], $kwargs['arena']);
+			$kwargs['position_x'], $kwargs['position_y'], $kwargs['arena'],
+			$kwargs['direction']);
 		if ($ship == NULL)
 			print ("It's NULL\n");
 		else {
