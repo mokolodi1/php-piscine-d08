@@ -3,15 +3,14 @@
 include_once('OnScreen.class.php');
 
 abstract class Ship extends OnScreen {
-	
-	
-	public $name;
-	public $max_health;
-	public $health;
-	public $default_shield;
-	public $shield;
-	public $speed;
-	public $manoeuvre;
+
+	protected $name;
+	protected $max_health;
+	protected $health;
+	protected $default_shield;
+	protected $shield;
+	protected $speed;
+	protected $agility;
 
 	public function __construct( array $kwargs ) {
 		parent::__construct( $kwargs );
@@ -21,7 +20,7 @@ abstract class Ship extends OnScreen {
 				|| !isset( $kwargs['shield'] )
 				|| !isset( $kwargs['pp'] ) 
 				|| !isset( $kwargs['speed'])
-				|| !isset( $kwargs['manoeuvre'])) {
+				|| !isset( $kwargs['agility'])) {
 			error_log("Ship error: incorrect parameters to constructor"
 						. PHP_EOL );
 			exit(1);
@@ -87,7 +86,13 @@ abstract class Ship extends OnScreen {
 				$this->position_y += $y;
 			}
 		}
-	}	
+	}
+
+	public function getName() {			return $this->name; }
+	public function getMaxHealth() {	return $this->maxHealth; }
+	public function getShield() {		return $this->shield; }
+	public function getSpeed() {		return $this->speed; }
+	public function getAgility() {		return $this->agility; }
 } 
 
 ?>

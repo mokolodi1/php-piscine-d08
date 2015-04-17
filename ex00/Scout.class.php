@@ -17,9 +17,8 @@ class Scout extends Ship {
 									, 'max_health' => 10
 									, 'shield' => 5
 									, 'pp' => 5
-									, 'image_file' => 'scout.png' # no longer use this
 									, 'speed' => 15
-									,  'manoeuvre' => 4));
+									, 'agility' => 4));
 	}
 
 	public function fight(array $kwargs) {

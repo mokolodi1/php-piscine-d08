@@ -13,7 +13,7 @@ if (!isset($_SESSION['arena'])) {
 function getShipName($x, $y, $arena) {
 	foreach ( $arena->getOnScreens() as $current ) {
 		if ( $current->isOccupying($x, $y) ) {
-			return $current->name;
+			return $current->getName();
 		}
 	}
 	return "empty";
@@ -48,10 +48,6 @@ function getShipName($x, $y, $arena) {
 		}
 ?>
 
-<pre>
-<?php print_r($_SESSION['arena']); ?>
-</pre>
-
 </table>
 	<p> MOVING SHIP A </p><br/>
 	<form action="move.php" method="POST">
@@ -85,6 +81,10 @@ function getShipName($x, $y, $arena) {
 	<form action="reset.php" method="POST">
 		<input name="reset" value="reset" type="submit" />
 	</form>
+
+	<pre>
+	<?php print_r($_SESSION['arena']); ?>
+	</pre>
 </body>
 </html>
 
