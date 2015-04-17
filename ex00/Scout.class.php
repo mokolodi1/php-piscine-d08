@@ -25,7 +25,7 @@ class Scout extends Ship {
 		$ship = $this->type($kwargs['dice_roll'], $kwargs['width'],
 			$kwargs['position_x'], $kwargs['position_y'], $kwargs['arena'],
 			$kwargs['direction']);
-		if ($ship == NULL)
+		if ($ship === NULL)
 			error_log("ship that was shot was null (fight function, Scout.class.php)");
 		else {
 			$ship->shipIsShot($kwargs['arena']);

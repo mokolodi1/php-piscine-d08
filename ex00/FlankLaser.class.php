@@ -12,13 +12,7 @@ trait FlankLaser {
 	public $short = 10;
 	public $medium = 20;
 	public $long = 30;
-	
-	private $_spray;
-	private $_range;
-	private $_xpoint = 0;
-	private $_ypoint = 1;
-	private $_direction;
-	
+
 	#General for all weapons
 	public function get_range($dice_roll) {
 		if ($dice_roll === "short")
@@ -33,7 +27,6 @@ trait FlankLaser {
 	{
 		if ($direction === "shoot_down")
 		{
-			error_log($direction);
 			return 1;
 		}
 		else
@@ -41,20 +34,22 @@ trait FlankLaser {
 	}
 
 	#Specific for this one
-	public function type($dice_roll, $width, $position_x, $position_y, $arena, $direction) {
-		$this->_range = $this->get_range($dice_roll);
-		$this->_direction = $this->set_direction($direction);
-		while (abs($this->_ypoint) <= $this->_range) 
+	public function type($dice_roll, $width, $position_x, $position_y, $arena, $direction_string) {
+		$range = $this->get_range($dice_roll);
+		$direction = $this->set_direction($direction_string);
+		$ypoint = $direction;
+		$xpoint = 0;
+		while (abs($ypoint) <= $range) 
 		{
-			$this->_spray = $width + abs($this->_ypoint) - 1;
-			$this->_xpoint = 0 - abs($this->_ypoint) - 1;
-			while ($this->_xpoint < $this->_spray)
+			$spray = $width + abs($ypoint) - 1;
+			$xpoint = 0 - abs($ypoint) - 1;
+			while ($xpoint < $spray)
 			{
-				if ($arena->getTileContents($position_x + $this->_xpoint, $position_y + $this->_ypoint) !== NULL)
-					return ($arena->getTileContents($position_x + $this->_xpoint, $position_y + $this->_ypoint));
-				$this->_xpoint++;
+				if ($arena->getTileContents($position_x + $xpoint, $position_y + $ypoint) !== NULL)
+					return ($arena->getTileContents($position_x + $xpoint, $position_y + $ypoint));
+				$xpoint++;
 			}
-			$this->_ypoint += $this->_direction;
+			$ypoint += $direction;
 		}
 		return NULL;
 	}
