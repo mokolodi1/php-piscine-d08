@@ -76,6 +76,7 @@ function printHealthStats($name, $arena) {
 	<form action="shoot.php" method="POST">
 		<input type="hidden" name="name" value="a">
 		<input name="shoot" value="shoot_down" type="submit">
+		<input name="shoot" value="shoot_up" type="submit">
 	</form>
 	<p>
 		<?php
@@ -103,6 +104,7 @@ function printHealthStats($name, $arena) {
 	<form action="shoot.php" method="POST">
 		<input type="hidden" name="name" value="b">
 		<input name="shoot" value="shoot_down" type="submit">
+		<input name="shoot" value="shoot_up" type="submit">
 	</form>
 	<p>
 		<?php
