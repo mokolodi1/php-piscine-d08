@@ -8,8 +8,8 @@ class Arena {
 	private $onScreens = array();
 
 	public function __construct() {
-		$this->width = 150;
-		$this->height = 100;
+		$this->width = 120;
+		$this->height = 40;
 	}
 
 	public function addOnScreen($ship) {
@@ -49,6 +49,14 @@ class Arena {
 	public function getOnScreens() {
 		return $this->onScreens;
 	}
+
+	public function destroyShip($ship) {
+		if (($key = array_search($ship, $this->onScreens)) !== false){	
+ 			   unset($this->onScreens[$key]);
+ 			   	error_log("Destroyed ship");
+			}
+	}
+
 }
 
 ?>

@@ -52,12 +52,11 @@ abstract class Ship extends OnScreen {
 	
 	public function isInLimits($arena)
 	{
-		error_log($arena->width);
 		#check if the ship has gone out of screen
 		if($this->position_x < 0 || $this->position_x >= $arena->getWidth()
 			|| $this->position_y < 0 || $this->position_y >= $arena->getHeight())
 			{
-				$this->DestroyShip($arena);
+				$arena->destroyShip($this);
 				return FALSE;
 			}
 		return TRUE;
@@ -70,19 +69,11 @@ abstract class Ship extends OnScreen {
 			$this->shield = $this->shield - 1;
 		if ($this->health <= 0)
 		{
-			$this->DestroyShip($arena);
+			$arena->destroyShip($this);
 		}
 	}
 
-	public function DestroyShip($arena) {
-		if (($key = array_search($this, $arena->getOnScreens())) !== false){	
- 			   unset($arena->getOnScreens()[$key]);
- 			   	echo "Destroyed ship\n";
-			}
-	}
-
 	public function move($x, $y, $arena) {
-		error_log('move called');
 		$this->position_x += $x;
 		$this->position_y += $y;
 		if ($this->isInLimits($arena) == TRUE)
@@ -90,13 +81,10 @@ abstract class Ship extends OnScreen {
 			$this->position_x -= $x;
 			$this->position_y -= $y;
 			if ($arena->getTileContents($this->position_x + $x, $this->position_y + $y) !== NULL) {
-				$this->DestroyShip($arena);
+				$arena->destroyShip($this);
 			} else {
-				error_log('actually moved something');
 				$this->position_x += $x;
 				$this->position_y += $y;
-				error_log('new x = ' . $this->position_x);
-				error_log('new y = ' . $this->position_y);
 			}
 		}
 	}	
