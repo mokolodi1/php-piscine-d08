@@ -1,8 +1,11 @@
 <?php
 
 include_once('Ship.class.php');
+include_once ('Weapon.class.php');
 
 class Scout extends Ship {
+
+	use Flanklaser;
 
 	public function __construct($x, $y) {
 		parent::__construct( array ( 'name' => 'scout'
@@ -17,9 +20,16 @@ class Scout extends Ship {
 									, 'speed' => 15
 									,  'manoeuvre' => 4));
 	}
-	
-	public function fight() {
-		print ("fires gun " . PHP_EOL);
+
+	public function fight(array $kwargs) {
+		$ship = $this->type($kwargs['dice_roll'], $kwargs['width'],
+			$kwargs['position_x'], $kwargs['position_y'], $kwargs['arena']);
+		if ($ship == NULL)
+			print ("It's NULL\n");
+		else {
+			$ship->ShipisShot($kwargs['arena']);
+			print_r($kwargs['arena']->onScreens);
+		}
 	}
 	
 	public function __toString() {

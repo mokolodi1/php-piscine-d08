@@ -8,11 +8,14 @@ include_once('Scout.class.php');
 
 $arena = new Arena();
 
-$arena->addShip( new Scout(10, 10) );
+$arena->addShip( new Scout(10, 44) );
 $arena->addShip( new Scout(10, 50) );
 
-print_r($arena->getTileContents(11, 50));
 
-print_r($arena);
+$arena->onScreens[0]->fight(array("dice_roll" => "short", "width" => $arena->onScreens[0]->width,
+	"position_x" => $arena->onScreens[0]->position_x, "position_y" => $arena->onScreens[0]->position_y,
+	 "arena" => $arena));
+
+
 
 ?>

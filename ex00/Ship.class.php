@@ -31,6 +31,7 @@ class Ship extends OnScreen {
 		$this->max_health = $kwargs['max_health'];
 		$this->defaultShield = $kwargs['shield'];
 		$this->pointsDePuissance = $kwargs['pp'];
+		$this->shield = $kwargs['shield'];
 		
 		# setup for start of game
 		$this->health = $this->max_health;
@@ -40,8 +41,8 @@ class Ship extends OnScreen {
 	public function beginningOfTurn() {
 		$this->shield = $this->default_shield;
 	}
-	
-	// public abstract function fight();
+
+	public abstract function fight(array $kwargs);
 	
 	public function __toString() {
 		return sprintf( "%s[ health: %d ; default_shield: %d ; position (%d, %d) ]"
@@ -49,19 +50,17 @@ class Ship extends OnScreen {
 						, $this->position_x, $this->position_y);
 	}
 	
-	public function isShot() { # HOW DOES IT AFFECT IS SHOT\
-		if ($this->shield === 0)
+	public function ShipisShot($arena) { 
+		if ($this->shield == 0)
 			$this->health = $this->health - 1;
 		else
 			$this->shield = $this->shield - 1;
-	}
-	
-	public function isDestroyed() {
 		if ($this->health <= 0)
 		{
-			print ("The ship $name is destroyed");
+			if (($key = array_search($this, $arena->onScreens)) !== false){	
+ 			   unset($arena->onScreens[$key]);
+			}
 		}
-		return ($this->health <= 0); #nice
 	}
 }
 
