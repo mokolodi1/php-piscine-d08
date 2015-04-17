@@ -38,18 +38,6 @@ class Arena {
 		return ($x >= 0 && $x < $this->width && $y >= 0 && $y < $this->height);
 	}
 
-	public function getHeight() {
-		return $this->height;
-	}
-
-	public function getWidth() {
-		return $this->width;
-	}
-
-	public function getOnScreens() {
-		return $this->onScreens;
-	}
-
 	public function destroyShip($ship) {
 		if (($key = array_search($ship, $this->onScreens)) !== false){	
  			   unset($this->onScreens[$key]);
@@ -57,6 +45,9 @@ class Arena {
 			}
 	}
 
+	public function getHeight() {		return $this->height;		}
+	public function getWidth() {		return $this->width;		}
+	public function getOnScreens() {	return $this->onScreens;	}
 }
 
 ?>

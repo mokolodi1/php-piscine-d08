@@ -25,7 +25,7 @@ abstract class Ship extends OnScreen {
 						. PHP_EOL );
 			exit(1);
 		}
-		
+
 		$this->name = $kwargs['name'];
 		$this->max_health = $kwargs['max_health'];
 		$this->defaultShield = $kwargs['shield'];
@@ -61,7 +61,7 @@ abstract class Ship extends OnScreen {
 		return TRUE;
 	}
 
-	public function shipIsShot($arena) { 
+	public function shipIsShot($arena) {
 		if ($this->shield == 0)
 			$this->health = $this->health - 1;
 		else

@@ -31,21 +31,10 @@
 				&& $y < $this->position_y + $this->height);
 	}
 
-	public function getPositionX() {
-		return $this->position_x;
-	}
-
-	public function getPositionY() {
-		return $this->position_y;
-	}
-
-	public function getWidth() {
-		return $this->width;
-	}
-
-	public function getHeight() {
-		return $this->height;
-	}
+	public function getPositionX() {	return $this->position_x;	}
+	public function getPositionY() {	return $this->position_y;	}
+	public function getWidth() {		return $this->width;		}
+	public function getHeight() {		return $this->height;		}
 }
 
 ?>
