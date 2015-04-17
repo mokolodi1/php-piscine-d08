@@ -24,17 +24,14 @@ function getShipByName($name, $arena) {
 </pre>
 <?php
 
-
-$shipToMove = getShipByName($_POST['name'], $_SESSION['arena']);
-
 $exploded = explode(',', $_POST['move']);
 $delta_x = intval($exploded[0]);
 $delta_y = intval($exploded[1]);
 
-$shipToMove->move($delta_x, $delta_y, $_SESSION['arena']);
 
-error_log('delta x: ' . $delta_x);
-error_log('delta y: ' . $delta_y);
+$shipToMove = getShipByName($_POST['name'], $_SESSION['arena']);
+if ($shipToMove)
+	$shipToMove->move($delta_x, $delta_y, $_SESSION['arena']);
 
 header('Location: index.php');
 

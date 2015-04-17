@@ -2,15 +2,12 @@
 
 include_once('Arena.class.php');
 include_once('Scout.class.php');
+include_once('resetGame.php');
 
 session_start();
 
 if (!isset($_SESSION['arena'])) {
-	$arena = new Arena();
-
-	$arena->addShip( new Scout(0, 0, 'a') );
-	$arena->addShip( new Scout(10, 10, 'b') );
-    $_SESSION['arena'] = $arena;
+	resetGame();
 }
 
 function getShipName($x, $y, $arena) {
@@ -84,6 +81,9 @@ function getShipName($x, $y, $arena) {
 		<div>
 			<input name="move" value="0, 1" type="submit" />
 		</div>
+	</form>
+	<form action="reset.php" method="POST">
+		<input name="reset" value="reset" type="submit" />
 	</form>
 </body>
 </html>

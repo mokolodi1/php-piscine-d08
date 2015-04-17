@@ -37,6 +37,10 @@ class Arena {
 	public function isInBounds($x, $y) {
 		return ($x >= 0 && $x < $this->width && $y >= 0 && $y < $this->height);
 	}
+
+	public function getHeight() {
+		return $this->height;
+	}
 }
 
 ?>
