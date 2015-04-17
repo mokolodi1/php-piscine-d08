@@ -7,19 +7,41 @@ include_once('Scout.class.php');
 
 # start of 'main' bit
 
+
 $arena = new Arena();
 
-$arena->addShip( new Scout(5, 5) );
-$arena->addShip( new Scout(5, 10) );
 
-function onScreenStartsHere($x, $y, $arena) {
+
+$scoutA = new Scout(0, 0);
+$arena->addShip( $scoutA );
+// $arena->addShip( new Scout(5, 10) );
+
+print_r($_GET);
+
+function setCurrentPosition(Scout $scout, $x, $y)
+{
+	$scout->position_x = $x;
+	$scout->position_y = $y;
+}
+
+$_SESSION['xA'] = $_GET['xA'];
+$_SESSION['yA'] = $_GET['yA'];
+$xA = intval($_SESSION['xA']);
+echo $scoutA->position_x;
+$yA = intval($_SESSION['yA']);
+echo $scoutA->position_y;
+
+setCurrentPosition($scoutA, $xA, $yA);
+
+function giveShipClass($x, $y, $arena) {
 	foreach ( $arena->onScreens as $current ) {
-		if ( $current->position_x === $x && $current->position_y === $y ) {
-			return $current->image_file;
+		if ( $current->position_x === $y && $current->position_y === $x ) {
+			return $current->name;
 		}
 	}
-	return FALSE;
+	return "empty";
 }
+
 
 ?>
 
@@ -29,24 +51,43 @@ function onScreenStartsHere($x, $y, $arena) {
 </head>
 <body>
 	<table>
-		<?php
+<?php
 		$row = 0;
+
 		while ($row < $arena->height) {
 			$column = 0;
-			echo "<tr>";
+?>
+			<tr>
+<?php
 			while ( $column < $arena->width ) {
-				echo "<td>";
-				$starts_here = onScreenStartsHere($row, $column, $arena);
-				if ( $starts_here !== FALSE ) {
-					echo '<img src="images/' . $starts_here . '" />';
-				}
-				echo "</td>";
+?>
+				<td class="<?= giveShipClass($row, $column, $arena)?>"></td>
+<?php
 				$column++;
 			}
-			echo "</tr>";
+?>
+			</tr>
+<?php
 			$row++;
 		}
-		?>
+?>
 </table>
+
+	<form action="moveShip.php" method="post">
+	<div>
+		<input name="move" value="moveUp" type="submit" />
+	</div>
+	<div>
+		<input name="move" value="moveLeft" type="submit" />
+		<input name="move" value="moveRight" type="submit" />
+	</div>
+	<div>
+		<input name="move" value="moveDown" type="submit" />
+	</div>
+	</form>
 </body>
 </html>
+
+<?php
+	// session_destroy();
+?>

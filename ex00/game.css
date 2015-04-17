@@ -23,5 +23,6 @@ td img {
 }
 
 .scout {
-	background-image: "images/scout.png";
+	/*background-image: "images/scout.png";*/
+	background-color: red;
 }

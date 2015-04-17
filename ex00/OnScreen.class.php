@@ -1,6 +1,6 @@
 <?php
 
-class OnScreen {
+ class OnScreen {
 
 	const ROTATION_0 = 0; # pointing upwards
 	const ROTATION_90 = 1; # pointing right
@@ -15,12 +15,29 @@ class OnScreen {
 	public $image_file;
 	public $rotation;
 
+	public function checkFitScreen( array $kwargs) #doesn't work when I call it, Can someone chek it?
+	{
+		$good_pos = 1;
+		if (150 < $kwargs['x'] || $kwargs['x'] < 0)
+			$good_pos = 0;
+		else if (100 < $kwargs['y'] || $kwargs['y'] < 0)
+			$good_pos = 0;
+		else if (150 < $kwargs['x'] + $kwargs['width'] || $kwargs['width'] == 0)
+			$good_pos = 0;
+		else if (100 < $kwargs['y'] + $kwargs['height'] || $kwargs['height'] == 0)
+			$good_pos = 0;
+		if ($good_pos === 0)
+			return FALSE;
+		else
+			return TRUE;
+	}
+
 	public function __construct( array $kwargs ) {
 		if ( !isset( $kwargs['x'] )
 				|| !isset( $kwargs['y'] )
 				|| !isset( $kwargs['width'] )
 				|| !isset( $kwargs['height'] )
-				|| !isset( $kwargs['image_file'] ) ) {
+				|| !isset( $kwargs['image_file'] )) {
 			error_log("OnScreen error: incorrect parameters to constructor"
 						. PHP_EOL );
 			exit(1);
@@ -33,19 +50,17 @@ class OnScreen {
 		
 		$this->rotation = OnScreen::ROTATION_0;
 	}
-	
-	public function checkFitScreen( array $kwargs) 
+
+	public function isInLimits(Arena $arena)
 	{
-		$god_pos = 1;
-		if (150 < $kwargs['x'] || $kwargs['x'] < 0)
-			$good_pos = 0;
-		else if (100 < $kwargs['y'] || $kwargs['y'] < 0)
-			$good_pos = 0;
-		else if (150 < $kwargs['x'] + $kwargs['width'] || $kwargs['width'] == 0)
-			$good_pos = 0;
-		else if (100 < $kwargs['y'] + $kwargs['height'] || $kwargs['height'] == 0)
-			$good_pos = 0;
-	}
+		#check if the ship has gone out of screen
+		if($this->position_x < 0 || $this->position_x > $arena->width
+			|| $this->position_y < 0 || $this->position_y > $arena->height)
+			{
+				echo "YOUR OnScreen OBJECT IS OUT OF SCREEN\n";
+				exit (1);
+			}
+	}	
 	
 	public function isOccupying($x, $y) {
 		# returns whether the OnScreen is over ($x, $y)
@@ -55,7 +70,7 @@ class OnScreen {
 				&& $y < $this->position_y + $this->height);
 		# this needs to change when we add rotation
 	}
-	
+
 	public function rotateClockwise() {
 		$this->rotation += 1;
 		if ( $this->rotation > OnScreen::ROTATION_270 ) {
@@ -69,6 +84,8 @@ class OnScreen {
 			$this->rotation = OnScreen::ROTATION_270;
 		}
 	}
+	
+	
 
 }
 
