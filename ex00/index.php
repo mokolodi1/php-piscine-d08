@@ -11,7 +11,7 @@ if (!isset($_SESSION['arena'])) {
 }
 
 function getShipName($x, $y, $arena) {
-	foreach ( $arena->onScreens as $current ) {
+	foreach ( $arena->getOnScreens() as $current ) {
 		if ( $current->isOccupying($x, $y) ) {
 			return $current->name;
 		}
@@ -30,12 +30,12 @@ function getShipName($x, $y, $arena) {
 <?php
 		$row = 0;
 
-		while ($row < $_SESSION['arena']->height) {
+		while ($row < $_SESSION['arena']->getHeight()) {
 			$column = 0;
 ?>
 			<tr>
 <?php
-			while ( $column < $_SESSION['arena']->width ) {
+			while ( $column < $_SESSION['arena']->getWidth() ) {
 ?>
 				<td class="<?= getShipName($column, $row, $_SESSION['arena'])?>"></td>
 <?php

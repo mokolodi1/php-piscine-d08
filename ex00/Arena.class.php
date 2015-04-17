@@ -8,8 +8,8 @@ class Arena {
 	private $onScreens = array();
 
 	public function __construct() {
-		$this->width = 20;
-		$this->height = 20;
+		$this->width = 150;
+		$this->height = 100;
 	}
 
 	public function addOnScreen($ship) {
@@ -27,7 +27,7 @@ class Arena {
 	
 	public function __toString() {
 		$drawables = "";
-		foreach( $this->onScreens as $current ) {
+		foreach( $this->getOnScreens() as $current ) {
 			$drawables = $drawables . " " . $current;
 		}
 		return sprintf("Arena[ width: %d ; height: %d ; onScreens: [%s]"
@@ -44,6 +44,10 @@ class Arena {
 
 	public function getWidth() {
 		return $this->width;
+	}
+
+	public function getOnScreens() {
+		return $this->onScreens;
 	}
 }
 

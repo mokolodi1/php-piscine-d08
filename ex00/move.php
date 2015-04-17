@@ -8,7 +8,7 @@ include_once('Scout.class.php');
 session_start();
 
 function getShipByName($name, $arena) {
-	foreach ( $arena->onScreens as $current ) {
+	foreach ( $arena->getOnScreens() as $current ) {
 		if ( $name === $current->name ) {
 			return $current;
 		}

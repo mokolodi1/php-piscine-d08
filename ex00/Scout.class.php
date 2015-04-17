@@ -17,7 +17,7 @@ class Scout extends Ship {
 									, 'max_health' => 10
 									, 'shield' => 5
 									, 'pp' => 5
-									, 'image_file' => 'scout.png'
+									, 'image_file' => 'scout.png' # no longer use this
 									, 'speed' => 15
 									,  'manoeuvre' => 4));
 	}
@@ -29,7 +29,7 @@ class Scout extends Ship {
 			print ("It's NULL\n");
 		else {
 			$ship->ShipisShot($kwargs['arena']);
-			print_r($kwargs['arena']->onScreens);
+			print_r($kwargs['arena']->getOnScreens());
 		}
 	}
 	

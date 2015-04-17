@@ -54,7 +54,7 @@ abstract class Ship extends OnScreen {
 	{
 		#check if the ship has gone out of screen
 		if($this->position_x < 0 || $this->position_x > $arena->getWidth()
-			|| $this->position_y < 0 || $this->position_y > $arena->getHeight)
+			|| $this->position_y < 0 || $this->position_y > $arena->getHeight())
 			{
 				$this->DestroyShip($arena);
 				return FALSE;
@@ -74,8 +74,8 @@ abstract class Ship extends OnScreen {
 	}
 
 	public function DestroyShip($arena) {
-		if (($key = array_search($this, $arena->onScreens)) !== false){	
- 			   unset($arena->onScreens[$key]);
+		if (($key = array_search($this, $arena->getOnScreens())) !== false){	
+ 			   unset($arena->getOnScreens()[$key]);
  			   	echo "Destroyed ship\n";
 			}
 	}
