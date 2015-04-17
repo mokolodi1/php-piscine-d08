@@ -30,3 +30,7 @@ td img {
 .b {
 	background-color: green;
 }
+
+.obstacle {
+	background-color: black;
+}

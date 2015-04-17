@@ -4,6 +4,8 @@
 
 include_once('Arena.class.php');
 include_once('Scout.class.php');
+include_once('Obstacle.class.php');
+
 include_once('getShipByName.php');
 
 session_start();
