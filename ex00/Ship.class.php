@@ -61,7 +61,7 @@ abstract class Ship extends OnScreen {
 		return TRUE;
 	}
 
-	public function ShipisShot($arena) { 
+	public function shipIsShot($arena) { 
 		if ($this->shield == 0)
 			$this->health = $this->health - 1;
 		else

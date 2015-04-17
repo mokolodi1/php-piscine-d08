@@ -27,7 +27,7 @@ class Scout extends Ship {
 		if ($ship == NULL)
 			print ("It's NULL\n");
 		else {
-			$ship->ShipisShot($kwargs['arena']);
+			$ship->shipIsShot($kwargs['arena']);
 			print_r($kwargs['arena']->getOnScreens());
 		}
 	}
