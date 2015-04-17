@@ -8,8 +8,8 @@ class Arena {
 	private $onScreens = array();
 
 	public function __construct() {
-		$this->width = 20;
-		$this->height = 20;
+		$this->width = 150;
+		$this->height = 100;
 	}
 
 	public function addOnScreen($ship) {

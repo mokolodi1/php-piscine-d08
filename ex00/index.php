@@ -123,9 +123,6 @@ function printShieldStats($name, $arena) {
 		<input name="reset" value="reset" type="submit" />
 	</form>
 
-	<pre>
-	<?php print_r($_SESSION['arena']); ?>
-	</pre>
 </body>
 </html>
 
