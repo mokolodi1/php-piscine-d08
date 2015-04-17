@@ -10,9 +10,6 @@ It has a toString method.
 You can also get the width, get the height and get the onScreens with the 
 methods getWidth(), getHeight(), getOnScreens().
 
-The isInBounds method checks if position(x, y) is still in the scope of the 
-arena.
-
 Width and Height are set by default to 150 and 100.
 
 ---------------------------------------------------------------------- Arena ->
