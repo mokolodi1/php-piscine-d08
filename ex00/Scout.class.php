@@ -1,11 +1,11 @@
 <?php
 
 include_once('Ship.class.php');
-include_once ('Weapon.class.php');
+include_once ('Flanklaser.class.php');
 
 class Scout extends Ship {
 
-	use Flanklaser;
+	use FlankLaser;
 
 	# Teo: this has another thing called $name to specify between first and second. Maybe we should call this $team later?
 	public function __construct($x, $y, $name) {
