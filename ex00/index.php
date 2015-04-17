@@ -3,6 +3,7 @@
 include_once('Arena.class.php');
 include_once('Scout.class.php');
 include_once('resetGame.php');
+include_once('getShipByName.php');
 
 session_start();
 
@@ -17,6 +18,15 @@ function getShipName($x, $y, $arena) {
 		}
 	}
 	return "empty";
+}
+
+function printHealthStats($name, $arena) {
+	$ship = getShipByName('a', $arena);
+	if ($ship) {
+		echo "Ship " . $name . " health: " . $ship->getHealth();
+	} else {
+		echo "Ship is dead!";
+	}
 }
 
 ?>
@@ -49,7 +59,7 @@ function getShipName($x, $y, $arena) {
 ?>
 
 </table>
-	<p> MOVING SHIP A </p><br/>
+	<p>Ship A controls:</p><br/>
 	<form action="move.php" method="POST">
 		<input type="hidden" name="name" value="a">
 		<div>
@@ -67,7 +77,13 @@ function getShipName($x, $y, $arena) {
 		<input type="hidden" name="name" value="a">
 		<input name="shoot" value="shoot_down" type="submit">
 	</form>
-	<p> MOVING SHIP B </p><br/>
+	<p>
+		<?php
+		printHealthStats('a', $_SESSION['arena']);
+		?>
+	</p>
+	
+	<p>Ship B controls:</p><br/>
 	<form action="move.php" method="POST">
 		<input type="hidden" name="name" value="b">
 		<div>
@@ -84,6 +100,11 @@ function getShipName($x, $y, $arena) {
 	<form action="reset.php" method="POST">
 		<input name="reset" value="reset" type="submit" />
 	</form>
+	<p>
+		<?php
+		printHealthStats('b', $_SESSION['arena']);
+		?>
+	</p>
 
 	<pre>
 	<?php print_r($_SESSION['arena']); ?>

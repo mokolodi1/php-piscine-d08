@@ -89,7 +89,7 @@ abstract class Ship extends OnScreen {
 	}
 
 	public function getName() {			return $this->name; }
-	public function getMaxHealth() {	return $this->maxHealth; }
+	public function getHealth() {		return $this->health; }
 	public function getShield() {		return $this->shield; }
 	public function getSpeed() {		return $this->speed; }
 	public function getAgility() {		return $this->agility; }
