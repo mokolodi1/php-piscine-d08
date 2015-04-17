@@ -56,5 +56,6 @@ trait FlankLaser {
 			}
 			$this->_ypoint += $this->_direction;
 		}
+		return NULL;
 	}
 }

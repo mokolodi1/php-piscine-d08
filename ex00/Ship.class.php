@@ -61,6 +61,7 @@ abstract class Ship extends OnScreen {
 		return TRUE;
 	}
 
+	# happens when a ship is hit with a shot
 	public function shipIsShot($arena) {
 		if ($this->shield == 0)
 			$this->health = $this->health - 1;
@@ -87,8 +88,6 @@ abstract class Ship extends OnScreen {
 			}
 		}
 	}
-
-	
 
 	public function getName() {			return $this->name; }
 	public function getHealth() {		return $this->health; }

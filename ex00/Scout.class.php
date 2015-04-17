@@ -26,10 +26,9 @@ class Scout extends Ship {
 			$kwargs['position_x'], $kwargs['position_y'], $kwargs['arena'],
 			$kwargs['direction']);
 		if ($ship == NULL)
-			print ("It's NULL\n");
+			error_log("ship that was shot was null (fight function, Scout.class.php)");
 		else {
 			$ship->shipIsShot($kwargs['arena']);
-			print_r($kwargs['arena']->getOnScreens());
 		}
 	}
 	
