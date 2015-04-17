@@ -5,7 +5,7 @@ include_once('Scout.class.php');
 include_once('resetGame.php');
 include_once('getShipByName.php');
 
-session_start();
+@session_start();
 
 if (!isset($_SESSION['arena'])) {
 	resetGame();

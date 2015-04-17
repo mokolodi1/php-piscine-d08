@@ -88,6 +88,8 @@ abstract class Ship extends OnScreen {
 		}
 	}
 
+	
+
 	public function getName() {			return $this->name; }
 	public function getHealth() {		return $this->health; }
 	public function getShield() {		return $this->shield; }
