@@ -3,12 +3,13 @@
 include_once('Arena.class.php');
 include_once('Scout.class.php');
 
-if (session_status() == PHP_SESSION_NONE) {
+session_start();
+
+if (!isset($_SESSION['arena'])) {
 	$arena = new Arena();
 
 	$arena->addShip( new Scout(0, 0, 'a') );
 	$arena->addShip( new Scout(10, 10, 'b') );
-    session_start();
     $_SESSION['arena'] = $arena;
 }
 
@@ -32,14 +33,14 @@ function getShipName($x, $y, $arena) {
 <?php
 		$row = 0;
 
-		while ($row < $arena->height) {
+		while ($row < $_SESSION['arena']->height) {
 			$column = 0;
 ?>
 			<tr>
 <?php
-			while ( $column < $arena->width ) {
+			while ( $column < $_SESSION['arena']->width ) {
 ?>
-				<td class="<?= getShipName($column, $row, $arena)?>"></td>
+				<td class="<?= getShipName($column, $row, $_SESSION['arena'])?>"></td>
 <?php
 				$column++;
 			}
@@ -49,6 +50,11 @@ function getShipName($x, $y, $arena) {
 			$row++;
 		}
 ?>
+
+<pre>
+<?php print_r($_SESSION['arena']); ?>
+</pre>
+
 </table>
 	<p> MOVING SHIP A </p><br/>
 	<form action="move.php" method="POST">

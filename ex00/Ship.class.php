@@ -81,17 +81,21 @@ abstract class Ship extends OnScreen {
 	}
 
 	public function move($x, $y, $arena) {
+		error_log('move called');
 		$this->position_x += $x;
 		$this->position_y += $y;
 		if ($this->isInLimits($arena) == TRUE)
 		{
 			$this->position_x -= $x;
 			$this->position_y -= $y;
-			if ($arena->getTileContents($this->position_x + $x, $this->position_y + $y) !== NULL)
+			if ($arena->getTileContents($this->position_x + $x, $this->position_y + $y) !== NULL) {
 				$this->DestroyShip($arena);
-			else {
-					$this->position_x += $x;
-					$this->position_y += $y;
+			} else {
+				error_log('actually moved something');
+				$this->position_x += $x;
+				$this->position_y += $y;
+				error_log('new x = ' . $this->position_x);
+				error_log('new y = ' . $this->position_y);
 			}
 		}
 	}

@@ -8,7 +8,7 @@ class Scout extends Ship {
 	use Flanklaser;
 
 	# Teo: this has another thing called $name to specify between first and second. Maybe we should call this $team later?
-	public function __construct(int $x, int $y, String $name) {
+	public function __construct($x, $y, $name) {
 		parent::__construct( array ( 'name' => $name
 									, 'x' => $x
 									, 'y' => $y
