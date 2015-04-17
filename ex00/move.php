@@ -4,18 +4,11 @@
 
 include_once('Arena.class.php');
 include_once('Scout.class.php');
+include_once('getShipByName.php');
 
 session_start();
 
-function getShipByName($name, $arena) {
-	foreach ( $arena->getOnScreens() as $current ) {
-		if ( $name === $current->getName() ) {
-			return $current;
-		}
-	}
-	error_log('ship not found in getShipByName (move.php)');
-	return null;
-}
+
 
 # debugging
 ?>
