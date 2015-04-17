@@ -8,13 +8,13 @@ trait FlankLaser {
 #Order decides number of charges [i.e number of times the dice is rolled]
 #diceRoll decides range
 
-	public $charges = 0;
-	public $short = 10;
-	public $medium = 20;
-	public $long = 30;
+	private static final $charges = 0;
+	private static final $short = 10;
+	private static final $medium = 20;
+	private static final $long = 30;
 
 	#General for all weapons
-	public function get_range($dice_roll) {
+	private function get_range($dice_roll) {
 		if ($dice_roll === "short")
 			return ($this->short);
 		else if ($dice_roll === "medium")
@@ -23,7 +23,7 @@ trait FlankLaser {
 			return ($this->long);
 	}
 	
-	public function set_direction($direction)
+	private function set_direction($direction)
 	{
 		if ($direction === "shoot_down")
 		{
