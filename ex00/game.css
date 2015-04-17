@@ -4,13 +4,13 @@ table{
 
 tr {
 	
-	max-height: 10px;
+	max-height: 8px;
 
 }
 
 td {
-	width: 10px;
-	height: 13px; /* I don't know why it's 10... */
+	width: 8px;
+	height: 8px; /* I don't know why it's 10... */
 	border: 1px solid black;
 }
 
