@@ -1,57 +1,16 @@
 <?php
 
-session_start();
-
 include_once('Arena.class.php');
 include_once('Scout.class.php');
 
-# start of 'main' bit
+if (session_status() == PHP_SESSION_NONE) {
+	$arena = new Arena();
 
-$arena = new Arena();
-
-$scoutA = new Scout(0, 0);
-$scoutA->name = "scoutA";
-$arena->addShip( $scoutA );
-
-$scoutB = new Scout(0, 0);
-$scoutB->name = "scoutB";
-$arena->addShip( $scoutB );
-
-
-// $arena->addShip( new Scout(5, 10) );
-
-print_r($_GET);
-
-function setCurrentPosition(Scout $scout, $x, $y)
-{
-	$scout->position_x = $x;
-	$scout->position_y = $y;
+	$arena->addShip( new Scout(0, 0, 'a') );
+	$arena->addShip( new Scout(10, 10, 'b') );
+    session_start();
+    $_SESSION['arena'] = $arena;
 }
-
-// GETTING POSITION OF SHIP A
-
-$_SESSION['xA'] = $_GET['xA'];
-$_SESSION['yA'] = $_GET['yA'];
-$xA = intval($_SESSION['xA']);
-echo $scoutA->position_x;
-$yA = intval($_SESSION['yA']);
-echo $scoutA->position_y;
-
-// GETTING POSITION OF SHIP B
-
-$_SESSION['xB'] = $_GET['xB'];
-$_SESSION['yB'] = $_GET['yB'];
-$xB = intval($_SESSION['xB']);
-echo $scoutA->position_x;
-$yB = intval($_SESSION['yB']);
-echo $scoutA->position_y;
-
-// SETTING BOTH POSITIONS
-
-
-setCurrentPosition($scoutA, $xA, $yA);
-setCurrentPosition($scoutB, $xB, $yB);
-
 
 function getShipName($x, $y, $arena) {
 	foreach ( $arena->onScreens as $current ) {
@@ -61,7 +20,6 @@ function getShipName($x, $y, $arena) {
 	}
 	return "empty";
 }
-
 
 ?>
 
@@ -93,32 +51,33 @@ function getShipName($x, $y, $arena) {
 ?>
 </table>
 	<p> MOVING SHIP A </p><br/>
-	<form action="move<?= $scoutA->name ?>.php" method="post">
-	<div>
-		<input name="move" value="moveUp" type="submit" />
-	</div>
-	<div>
-		<input name="move" value="moveLeft" type="submit" />
-		<input name="move" value="moveRight" type="submit" />
-	</div>
-	<div>
-		<input name="move" value="moveDown" type="submit" />
-	</div>
+	<form action="move.php" method="POST">
+		<input type="hidden" name="name" value="a">
+		<div>
+			<input name="move" value="0, -1" type="submit" />
+		</div>
+		<div>
+			<input name="move" value="-1, 0" type="submit" />
+			<input name="move" value="1, 0" type="submit" />
+		</div>
+		<div>
+			<input name="move" value="0, 1" type="submit" />
+		</div>
+	</form>
 	
 	<p> MOVING SHIP B </p><br/>
-
-	</form>
-	<form action="move<?= $scoutB->name ?>.php" method="post">
-	<div>
-		<input name="move" value="moveUp" type="submit" />
-	</div>
-	<div>
-		<input name="move" value="moveLeft" type="submit" />
-		<input name="move" value="moveRight" type="submit" />
-	</div>
-	<div>
-		<input name="move" value="moveDown" type="submit" />
-	</div>
+	<form action="move.php" method="POST">
+		<input type="hidden" name="name" value="b">
+		<div>
+			<input name="move" value="0, -1" type="submit" />
+		</div>
+		<div>
+			<input name="move" value="-1, 0" type="submit" />
+			<input name="move" value="1, 0" type="submit" />
+		</div>
+		<div>
+			<input name="move" value="0, 1" type="submit" />
+		</div>
 	</form>
 </body>
 </html>
