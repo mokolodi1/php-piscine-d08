@@ -1,12 +1,7 @@
 <?php
 
  class OnScreen {
-/*
-	const ROTATION_0 = 0; # pointing upwards
-	const ROTATION_90 = 1; # pointing right
-	const ROTATION_180 = 2; # pointing down
-	const ROTATION_270 = 3; # pointing left
-*/
+
 	# position_x/y is the top left corner
 	protected $position_x;
 	protected $position_y;
@@ -26,8 +21,6 @@
 		$this->position_y = $kwargs['y'];
 		$this->width = $kwargs['width'];
 		$this->height = $kwargs['height'];
-		
-/*		$this->rotation = OnScreen::ROTATION_0;*/
 	}
 	
 	public function isOccupying($x, $y) {
@@ -36,7 +29,6 @@
 				&& $x < $this->position_x + $this->width
 				&& $y >= $this->position_y
 				&& $y < $this->position_y + $this->height);
-		# this needs to change when we add rotation
 	}
 
 	public function getPositionX() {
