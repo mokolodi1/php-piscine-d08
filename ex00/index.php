@@ -63,7 +63,10 @@ function getShipName($x, $y, $arena) {
 			<input name="move" value="0, 1" type="submit" />
 		</div>
 	</form>
-	
+	<form action="shoot.php" method="POST">
+		<input type="hidden" name="name" value="a">
+		<input name="shoot" value="shoot_down" type="submit">
+	</form>
 	<p> MOVING SHIP B </p><br/>
 	<form action="move.php" method="POST">
 		<input type="hidden" name="name" value="b">
