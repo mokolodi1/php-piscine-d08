@@ -58,9 +58,8 @@
 			|| $this->position_y < 0 || $this->position_y > $arena->height)
 			{
 				echo "YOUR OnScreen OBJECT IS OUT OF SCREEN\n";
-				exit (1);
 			}
-	}	
+	}
 	
 	public function isOccupying($x, $y) {
 		# returns whether the OnScreen is over ($x, $y)
