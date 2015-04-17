@@ -7,15 +7,11 @@ include_once('Scout.class.php');
 
 # start of 'main' bit
 
-
 $arena = new Arena();
-
-
 
 $scoutA = new Scout(0, 0);
 $scoutA->name = "scoutA";
 $arena->addShip( $scoutA );
-
 
 $scoutB = new Scout(0, 0);
 $scoutB->name = "scoutB";
@@ -57,10 +53,9 @@ setCurrentPosition($scoutA, $xA, $yA);
 setCurrentPosition($scoutB, $xB, $yB);
 
 
-
-function giveShipClass($x, $y, $arena) {
+function getShipName($x, $y, $arena) {
 	foreach ( $arena->onScreens as $current ) {
-		if ( $current->position_x === $y && $current->position_y === $x ) {
+		if ( $current->isOccupying($x, $y) ) {
 			return $current->name;
 		}
 	}
@@ -86,7 +81,7 @@ function giveShipClass($x, $y, $arena) {
 <?php
 			while ( $column < $arena->width ) {
 ?>
-				<td class="<?= giveShipClass($row, $column, $arena)?>"></td>
+				<td class="<?= getShipName($column, $row, $arena)?>"></td>
 <?php
 				$column++;
 			}
