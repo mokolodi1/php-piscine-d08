@@ -3,16 +3,16 @@
 include_once('OnScreen.class.php');
 
 class Arena {
-	public $width;
-	public $height;
-	public $onScreens = array();
+	private $width;
+	private $height;
+	private $onScreens = array();
 
 	public function __construct() {
 		$this->width = 20;
 		$this->height = 20;
 	}
 
-	public function addShip($ship) {
+	public function addOnScreen($ship) {
 		$this->onScreens[] = $ship;
 	}
 	
@@ -40,6 +40,10 @@ class Arena {
 
 	public function getHeight() {
 		return $this->height;
+	}
+
+	public function getWidth() {
+		return $this->width;
 	}
 }
 
